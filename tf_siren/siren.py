@@ -101,7 +101,7 @@ class SinusodialRepresentationDense(tf.keras.layers.Dense):
     def call(self, inputs):
         """
         Overriding the Dense layer call, in order to multiple `kernel` by the factor `w0`
-        prior to matmul. This preserves the distribution of the activation constant,
+        prior to matmul. This preserves the distribution of the activation,
         while leaving gradients wrt int input of sine neuron unchanged.
         """
         rank = inputs.shape.rank

@@ -28,14 +28,14 @@ class SIRENModel(tf.keras.Model):
         """
         super(SIRENModel, self).__init__(**kwargs)
 
-        siren_layers = [siren.SinusodialRepresentationDense(units, w0=w0_initial, use_bias=use_bias)]
+        siren_layers = [siren.SinusodialRepresentationDense(units, w0=w0_initial, use_bias=use_bias, **kwargs)]
 
         for _ in range(num_layers - 1):
-            siren_layers.append(siren.SinusodialRepresentationDense(units, w0=w0, use_bias=use_bias))
+            siren_layers.append(siren.SinusodialRepresentationDense(units, w0=w0, use_bias=use_bias, **kwargs))
 
         self.siren_layers = tf.keras.Sequential(siren_layers)
         self.final_dense = siren.SinusodialRepresentationDense(final_units, activation=final_activation,
-                                                               use_bias=use_bias)
+                                                               use_bias=use_bias, **kwargs)
 
     def call(self, inputs, training=None, mask=None):
         features = self.siren_layers(inputs)

@@ -59,8 +59,9 @@ learning_rate = tf.keras.optimizers.schedules.PolynomialDecay(0.0005, decay_step
 optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
 model.compile(optimizer, loss='mse')
 
-if not os.path.exists('checkpoints/siren/inpainting/'):
-    os.makedirs('checkpoints/siren/inpainting/')
+checkpoint_dir = 'checkpoints/siren/inpainting/'
+if not os.path.exists(checkpoint_dir):
+    os.makedirs(checkpoint_dir)
 
 
 timestamp = datetime.now().strftime('%Y-%m-%d %H-%M-%S')
@@ -70,7 +71,7 @@ if not os.path.exists(logdir):
     os.makedirs(logdir)
 
 callbacks = [
-    tf.keras.callbacks.ModelCheckpoint('checkpoints/siren/inpainting/model', monitor='loss', verbose=0,
+    tf.keras.callbacks.ModelCheckpoint(checkpoint_dir + 'model', monitor='loss', verbose=0,
                                        save_best_only=True, save_weights_only=True, mode='min'),
     tf.keras.callbacks.TensorBoard(logdir, update_freq='batch', profile_batch=20)
 ]
