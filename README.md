@@ -12,7 +12,7 @@ from tf_siren.siren_mlp import SIRENModel
 ip = tf.keras.layers.Input(shape=[2])
 x = SinusodialRepresentationDense(32,
                                   activation='sine', # default activation function
-                                  w0=1.0)(ip)            # w0 represents sin(w0 * x) where x is the input.
+                                  w0=1.0)(ip)        # w0 represents sin(w0 * x) where x is the input.
                                   
 model = tf.keras.Model(inputs=ip, outputs=x)
 
