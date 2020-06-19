@@ -6,6 +6,7 @@ from tf_siren import siren_mlp
 
 BATCH_SIZE = 8192
 
+# Image Reference - http://earthsongtiles.com/celtic_tiles.html
 img_filepath = 'data/celtic_spiral_knot.jpg'
 img_raw = tf.io.read_file(img_filepath)
 img_ground_truth = tf.io.decode_image(img_raw, channels=3, dtype=tf.float32)

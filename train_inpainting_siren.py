@@ -38,7 +38,7 @@ def build_train_tensors():
 img_mask, img_train = build_train_tensors()
 
 train_dataset = tf.data.Dataset.from_tensor_slices((img_mask, img_train))
-train_dataset = train_dataset.shuffle(10000).batch(BATCH_SIZE)
+train_dataset = train_dataset.shuffle(10000).batch(BATCH_SIZE).cache()
 train_dataset = train_dataset.prefetch(tf.data.experimental.AUTOTUNE)
 
 # Build model
@@ -57,7 +57,8 @@ learning_rate = tf.keras.optimizers.schedules.PolynomialDecay(0.0005, decay_step
                                                               power=2.0)
 
 optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
-model.compile(optimizer, loss='mse')
+loss = tf.keras.losses.MeanSquaredError(reduction=tf.keras.losses.Reduction.NONE)  # Sum of squared error
+model.compile(optimizer, loss=loss)
 
 checkpoint_dir = 'checkpoints/siren/inpainting/'
 if not os.path.exists(checkpoint_dir):
