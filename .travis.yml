@@ -1,0 +1,24 @@
+language: python
+matrix:
+  include:
+    - python: 3.6
+      env: API_LEVEL=TF2
+    - python: 3.7
+      sudo: yes
+      dist: xenial
+      env: API_LEVEL=TF2
+# command to install dependencies
+install:
+  - pip install -e .[tests]
+  - if [[ "$API_LEVEL" == "TF2" ]]; then
+    pip install tensorflow;
+    else
+    pip install tensorflow==1.15.0;
+    fi
+# command to run tests
+script:
+  - pytest tests/
+notifications:
+  email:
+    on_success: never
+    on_failure: always
