@@ -22,7 +22,7 @@ model = SIRENModel(units=256, final_units=3, final_activation='sigmoid',
 ```
 
 # Results on Image Inpainting task
-A partial implementation of the image inpainting task is available as the `train_inpainting_siren.py` and `eval_inpainting_siren.py` scripts.
+A partial implementation of the image inpainting task is available as the `train_inpainting_siren.py` and `eval_inpainting_siren.py` scripts inside the `scripts` directory.
 
 Weight files are made available in the repository under the `Release` tab of the project. Extract the weights and place the `checkpoints` folder at the root of the project directory.
 

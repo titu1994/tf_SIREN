@@ -8,7 +8,7 @@ BATCH_SIZE = 8192
 EPOCHS = 5000
 
 # Image Reference - http://earthsongtiles.com/celtic_tiles.html
-img_filepath = 'data/celtic_spiral_knot.jpg'
+img_filepath = '../data/celtic_spiral_knot.jpg'
 img_raw = tf.io.read_file(img_filepath)
 img_ground_truth = tf.io.decode_image(img_raw, channels=3, dtype=tf.float32)
 
@@ -66,7 +66,7 @@ if not os.path.exists(checkpoint_dir):
 
 
 timestamp = datetime.now().strftime('%Y-%m-%d %H-%M-%S')
-logdir = os.path.join('logs/siren/inpainting/', timestamp)
+logdir = os.path.join('../logs/siren/inpainting/', timestamp)
 
 if not os.path.exists(logdir):
     os.makedirs(logdir)
