@@ -1,6 +1,20 @@
 # Tensorflow Sinusodial Representation Networks (SIREN)
 Tensorflow 2.0 implementation of Sinusodial Representation networks (SIREN) from the paper [Implicit Neural Representations with Periodic Activation Functions](https://arxiv.org/abs/2006.09661).
 
+# Installation
+
+ - Pip install
+
+```bash
+$ pip install --upgrade tf_siren
+```
+
+ - Pip install (test support)
+
+```bash
+$ pip install --upgrade tf_siren[tests]
+```
+
 # Usage
 Copy the `tf_siren` folder to your local directory and import either `SinusodialRepresentationDense` or `SIRENModel`.
 
