@@ -5,8 +5,8 @@ Tensorflow 2.0 implementation of Sinusodial Representation networks (SIREN) from
 Copy the `tf_siren` folder to your local directory and import either `SinusodialRepresentationDense` or `SIRENModel`.
 
 ```python
-from tf_siren.siren import SinusodialRepresentationDense
-from tf_siren.siren_mlp import SIRENModel
+from tf_siren import SinusodialRepresentationDense
+from tf_siren import SIRENModel
 
 # You can use SinusodialRepresentationDense exactly like you ordinarily use Dense layers.
 ip = tf.keras.layers.Input(shape=[2])
@@ -30,6 +30,19 @@ These weights generates the following output after 5000 epochs of training with 
 
 <img src="https://github.com/titu1994/tf_SIREN/blob/master/images/celtic_knot.png?raw=true" height=100% width=100%>
 
+# Citation
+
+```
+@misc{sitzmann2020implicit,
+    title={Implicit Neural Representations with Periodic Activation Functions},
+    author={Vincent Sitzmann and Julien N. P. Martel and Alexander W. Bergman and David B. Lindell and Gordon Wetzstein},
+    year={2020},
+    eprint={2006.09661},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+```
+
 # Requirements
-Tensorflow 2.0+
-Matplotlib to visualize eval result
+ - Tensorflow 2.0+
+ - Matplotlib to visualize eval result
