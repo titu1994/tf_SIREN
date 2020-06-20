@@ -44,6 +44,18 @@ These weights generates the following output after 5000 epochs of training with 
 
 <img src="https://github.com/titu1994/tf_SIREN/blob/master/images/celtic_knot.png?raw=true" height=100% width=100%>
 
+-----
+
+If we train for using only 20% of the available pixels in the image during training phase -
+
+<img src="https://github.com/titu1994/tf_SIREN/blob/master/images/celtic_knot_20pct.png?raw=true" height=100% width=100%>
+
+-----
+
+If we train for using only 20% of the available pixels in the image during training phase -
+
+<img src="https://github.com/titu1994/tf_SIREN/blob/master/images/celtic_knot_30pct.png?raw=true" height=100% width=100%>
+
 # Citation
 
 ```
