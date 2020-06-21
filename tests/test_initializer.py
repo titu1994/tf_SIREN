@@ -2,7 +2,6 @@ import pytest
 import numpy as np
 import scipy.stats as stats
 import tensorflow as tf
-import warnings
 import tf_siren
 
 normal_dist = stats.norm(0, 1)
