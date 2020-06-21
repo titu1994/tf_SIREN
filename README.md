@@ -52,7 +52,7 @@ If we train for using only 20% of the available pixels in the image during train
 
 -----
 
-If we train for using only 20% of the available pixels in the image during training phase -
+If we train for using only 30% of the available pixels in the image during training phase -
 
 <img src="https://github.com/titu1994/tf_SIREN/blob/master/images/celtic_knot_30pct.png?raw=true" height=100% width=100%>
 
