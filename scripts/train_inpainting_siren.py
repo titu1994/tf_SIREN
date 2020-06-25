@@ -42,8 +42,11 @@ train_dataset = train_dataset.shuffle(10000).batch(BATCH_SIZE).cache()
 train_dataset = train_dataset.prefetch(tf.data.experimental.AUTOTUNE)
 
 # Build model
-model = siren_mlp.SIRENModel(units=256, final_units=3, final_activation='sigmoid', num_layers=5,
-                             w0=1.0, w0_initial=30.0)
+# model = siren_mlp.SIRENModel(units=256, final_units=3, final_activation='sigmoid', num_layers=5,
+#                              w0=30.0, w0_initial=30.0)
+
+model = siren_mlp.ScaledSIRENModel(units=256, final_units=3, final_activation='sigmoid', num_layers=5,
+                                   scale=2.5, w0=30.0, w0_initial=30.0)
 
 # instantiate model
 _ = model(tf.zeros([1, 2]))
@@ -53,7 +56,7 @@ model.summary()
 BATCH_SIZE = min(BATCH_SIZE, len(img_mask))
 num_steps = int(len(img_mask) * EPOCHS / BATCH_SIZE)
 print("Total training steps : ", num_steps)
-learning_rate = tf.keras.optimizers.schedules.PolynomialDecay(0.0005, decay_steps=num_steps, end_learning_rate=5e-5,
+learning_rate = tf.keras.optimizers.schedules.PolynomialDecay(0.00005, decay_steps=num_steps, end_learning_rate=5e-5,
                                                               power=2.0)
 
 optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)

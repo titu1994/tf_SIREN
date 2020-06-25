@@ -16,7 +16,7 @@ $ pip install --upgrade tf_siren[tests]
 ```
 
 # Usage
-Copy the `tf_siren` folder to your local directory and import either `SinusodialRepresentationDense` or `SIRENModel`.
+For general usage equivalent to the paper, import and use either `SinusodialRepresentationDense` or `SIRENModel`.
 
 ```python
 from tf_siren import SinusodialRepresentationDense
@@ -35,6 +35,28 @@ model = SIRENModel(units=256, final_units=3, final_activation='sigmoid',
                    num_layers=5, w0=1.0, w0_initial=30.0)
 ```
 
+-----
+
+For the **(experimental)** kernel scaled variants, import and use either  `ScaledSinusodialRepresentationDense` or `ScaledSIRENModel`.
+
+```python
+from tf_siren import ScaledSinusodialRepresentationDense
+from tf_siren import ScaledSIRENModel
+
+# You can use SinusodialRepresentationDense exactly like you ordinarily use Dense layers.
+ip = tf.keras.layers.Input(shape=[2])
+x = ScaledSinusodialRepresentationDense(32,
+                                        scale=1.0          # scale value should be carefully chosen in range [1, 2]
+                                        activation='sine', # default activation function
+                                        w0=1.0)(ip)        # w0 represents sin(w0 * x) where x is the input.
+                                  
+model = tf.keras.Model(inputs=ip, outputs=x)
+
+# Or directly use the model class to build a multi layer Scaled SIREN
+model = ScaledSIRENModel(units=256, final_units=3, final_activation='sigmoid', scale=1.0,
+                         num_layers=5, w0=1.0, w0_initial=30.0)
+```
+
 # Results on Image Inpainting task
 A partial implementation of the image inpainting task is available as the `train_inpainting_siren.py` and `eval_inpainting_siren.py` scripts inside the `scripts` directory.
 
@@ -47,13 +69,16 @@ These weights generates the following output after 5000 epochs of training with 
 # Citation
 
 ```
-@misc{sitzmann2020implicit,
-    title={Implicit Neural Representations with Periodic Activation Functions},
-    author={Vincent Sitzmann and Julien N. P. Martel and Alexander W. Bergman and David B. Lindell and Gordon Wetzstein},
-    year={2020},
-    eprint={2006.09661},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+@inproceedings{sitzmann2019siren,
+    author = {Sitzmann, Vincent
+              and Martel, Julien N.P.
+              and Bergman, Alexander W.
+              and Lindell, David B.
+              and Wetzstein, Gordon},
+    title = {Implicit Neural Representations
+              with Periodic Activation Functions},
+    booktitle = {arXiv},
+    year={2020}
 }
 ```
 
