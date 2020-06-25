@@ -78,6 +78,18 @@ If we train for using only 30% of the available pixels in the image during train
 
 <img src="https://github.com/titu1994/tf_SIREN/blob/master/images/celtic_knot_30pct.png?raw=true" height=100% width=100%>
 
+
+# (Experimental) Comparison of convergence between original and kernel scaled SIRENs
+
+The kernel scaled variants of the model converge faster than the original SIREN under certain circumstances. All the models below are trained with Adam optimizer with constant learning rate of 5e-5 for 5000 epochs and batch size of 8192 on the same image pixels (10% of the celtic spiral image).
+
+The tensorboard logs can be found here - 
+ - [Scale = 1.0](https://tensorboard.dev/experiment/64aLTNVFRz6Dl61iLGBvpA/#scalars&runSelectionState=eyJzY2FsZWRfc2lyZW5fMS4wXFx0cmFpbiI6dHJ1ZSwic2NhbGVkX3NpcmVuXzEuMlxcdHJhaW4iOmZhbHNlLCJzY2FsZWRfc2lyZW5fMS41XFx0cmFpbiI6ZmFsc2UsInNjYWxlZF9zaXJlbl8xLjhcXHRyYWluIjpmYWxzZSwic2NhbGVkX3NpcmVuXzIuMFxcdHJhaW4iOmZhbHNlLCJzaXJlbl93MF8zMC4wXFx0cmFpbiI6dHJ1ZX0%3D)
+ - [Scale = 1.2](https://tensorboard.dev/experiment/64aLTNVFRz6Dl61iLGBvpA/#scalars&runSelectionState=eyJzY2FsZWRfc2lyZW5fMS4wXFx0cmFpbiI6ZmFsc2UsInNjYWxlZF9zaXJlbl8xLjJcXHRyYWluIjp0cnVlLCJzY2FsZWRfc2lyZW5fMS41XFx0cmFpbiI6ZmFsc2UsInNjYWxlZF9zaXJlbl8xLjhcXHRyYWluIjpmYWxzZSwic2NhbGVkX3NpcmVuXzIuMFxcdHJhaW4iOmZhbHNlLCJzaXJlbl93MF8zMC4wXFx0cmFpbiI6dHJ1ZX0%3D)
+ - [Scale = 1.5](https://tensorboard.dev/experiment/64aLTNVFRz6Dl61iLGBvpA/#scalars&runSelectionState=eyJzY2FsZWRfc2lyZW5fMS4wXFx0cmFpbiI6ZmFsc2UsInNjYWxlZF9zaXJlbl8xLjJcXHRyYWluIjpmYWxzZSwic2NhbGVkX3NpcmVuXzEuNVxcdHJhaW4iOnRydWUsInNjYWxlZF9zaXJlbl8xLjhcXHRyYWluIjpmYWxzZSwic2NhbGVkX3NpcmVuXzIuMFxcdHJhaW4iOmZhbHNlLCJzaXJlbl93MF8zMC4wXFx0cmFpbiI6dHJ1ZX0%3D)
+ - [Scale = 1.8](https://tensorboard.dev/experiment/64aLTNVFRz6Dl61iLGBvpA/#scalars&runSelectionState=eyJzY2FsZWRfc2lyZW5fMS4wXFx0cmFpbiI6ZmFsc2UsInNjYWxlZF9zaXJlbl8xLjJcXHRyYWluIjpmYWxzZSwic2NhbGVkX3NpcmVuXzEuNVxcdHJhaW4iOmZhbHNlLCJzY2FsZWRfc2lyZW5fMS44XFx0cmFpbiI6dHJ1ZSwic2NhbGVkX3NpcmVuXzIuMFxcdHJhaW4iOmZhbHNlLCJzaXJlbl93MF8zMC4wXFx0cmFpbiI6dHJ1ZX0%3D)
+ - [Scale = 2.0](https://tensorboard.dev/experiment/64aLTNVFRz6Dl61iLGBvpA/#scalars&runSelectionState=eyJzY2FsZWRfc2lyZW5fMS4wXFx0cmFpbiI6ZmFsc2UsInNjYWxlZF9zaXJlbl8xLjJcXHRyYWluIjpmYWxzZSwic2NhbGVkX3NpcmVuXzEuNVxcdHJhaW4iOmZhbHNlLCJzY2FsZWRfc2lyZW5fMS44XFx0cmFpbiI6ZmFsc2UsInNjYWxlZF9zaXJlbl8yLjBcXHRyYWluIjp0cnVlLCJzaXJlbl93MF8zMC4wXFx0cmFpbiI6dHJ1ZX0%3D)
+
 # Citation
 
 ```

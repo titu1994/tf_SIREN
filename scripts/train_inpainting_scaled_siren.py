@@ -42,8 +42,8 @@ train_dataset = train_dataset.shuffle(10000).batch(BATCH_SIZE).cache()
 train_dataset = train_dataset.prefetch(tf.data.experimental.AUTOTUNE)
 
 # Build model
-model = siren_mlp.SIRENModel(units=256, final_units=3, final_activation='sigmoid', num_layers=5,
-                             w0=30.0, w0_initial=30.0)
+model = siren_mlp.ScaledSIRENModel(units=256, final_units=3, final_activation='sigmoid', num_layers=5,
+                                   scale=1.0, w0=30.0, w0_initial=30.0)
 
 # instantiate model
 _ = model(tf.zeros([1, 2]))
@@ -60,13 +60,13 @@ optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
 loss = tf.keras.losses.MeanSquaredError(reduction=tf.keras.losses.Reduction.NONE)  # Sum of squared error
 model.compile(optimizer, loss=loss)
 
-checkpoint_dir = 'checkpoints/siren/inpainting/'
+checkpoint_dir = 'checkpoints/scaled_siren/inpainting/'
 if not os.path.exists(checkpoint_dir):
     os.makedirs(checkpoint_dir)
 
 
 timestamp = datetime.now().strftime('%Y-%m-%d %H-%M-%S')
-logdir = os.path.join('../logs/siren/inpainting/', timestamp)
+logdir = os.path.join('../logs/scaled_siren/inpainting/', timestamp)
 
 if not os.path.exists(logdir):
     os.makedirs(logdir)
