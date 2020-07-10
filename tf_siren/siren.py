@@ -55,6 +55,11 @@ class Sine(tf.keras.layers.Layer):
 
     def call(self, inputs, **kwargs):
         return tf.sin(self.w0 * inputs)
+    
+    def get_config(self):
+        config = {'w0': self.w0}
+        base_config = super(Sine, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
 
 
 class SinusodialRepresentationDense(tf.keras.layers.Dense):
