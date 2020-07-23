@@ -53,7 +53,7 @@ class Sine(tf.keras.layers.Layer):
         super(Sine, self).__init__(**kwargs)
         self.w0 = w0
 
-    def call(self, inputs, **kwargs):
+    def call(self, inputs):
         return tf.sin(self.w0 * inputs)
     
     def get_config(self):
