@@ -13,4 +13,4 @@ from tf_siren.meta.meta_siren import HyperHeNormalInitializer
 from tf_siren.meta.meta_siren import MetaSinusodialRepresentationDense
 from tf_siren.meta.meta_siren_mlp import MetaSIRENModel
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
